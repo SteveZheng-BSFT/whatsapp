@@ -3,9 +3,15 @@ import { Chats } from './collections/chats';
 import { Messages } from './collections/messages';
 import { MessageType } from './models/message';
 import * as moment from 'moment';
+import { Accounts } from 'meteor/accounts-base';
 
 Meteor.startup(() => {
   // code to run on server at startup
+  if (Meteor.settings) {
+    Object.assign(Accounts._options, Meteor.settings['accounts-phone']);
+    SMS.twilio = Meteor.settings['twilio'];
+  }
+
   if (Chats.find({}).cursor.count() === 0) {
     let chatId;
 

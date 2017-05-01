@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Chat } from 'api/models/chat';
-import { Observable } from 'rxjs/Observable';
 import { Message, MessageType } from 'api/models/message';
 import { Messages } from 'api/collections/messages';
 import { MeteorObservable } from 'meteor-rxjs';
@@ -17,7 +16,6 @@ export class MessagesPage implements OnInit, OnDestroy {
   title: string;
   picture: string;
   messagesDayGroups;
-  messages: Observable<Message[]>;
   message: string = '';
   autoScroller: MutationObserver;
   scrollOffset = 0;
@@ -45,11 +43,7 @@ export class MessagesPage implements OnInit, OnDestroy {
   findMessagesDayGroups() {
     let isEven = false;
 
-    return Messages.find({
-      chatId: this.selectedChat._id
-    }, {
-      sort: { createdAt: 1 }
-    })
+    return Messages.find({ chatId: this.selectedChat._id }, { sort: { createdAt: 1 } })
       .map((messages: Message[]) => {
         const format = 'D MMMM Y';
 
