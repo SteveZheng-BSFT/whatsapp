@@ -9,12 +9,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChatsPage } from '../pages/chats-page/chats-page';
 import { MessagesPage } from '../pages/messages-page/messages-page';
 import { PhoneService } from '../services/phone';
+import { LoginPage } from '../pages/login-page/login-page';
+import { VerificationPage } from '../pages/verification-page/verification-page';
 
 @NgModule({
   declarations: [
     MyApp,
     ChatsPage,
-    MessagesPage
+    MessagesPage,
+    LoginPage,
+    VerificationPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,9 @@ import { PhoneService } from '../services/phone';
   entryComponents: [
     MyApp,
     ChatsPage,
-    MessagesPage
+    MessagesPage,
+    LoginPage,
+    VerificationPage
   ],
   providers: [
     StatusBar,
