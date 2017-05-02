@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { PhoneService } from '../../services/phone';
+import { ProfilePage } from '../profile-page/profile-page';
 
 @Component({
   selector: 'page-verification-page',
   templateUrl: 'verification-page.html',
 })
-export class VerificationPage {
+export class VerificationPage implements OnInit {
 
   private code: string = '';
   private phone: string;
@@ -29,8 +30,11 @@ export class VerificationPage {
   }
 
   verify(): void {
-    this.phoneService.login(this.phone, this.code)
-      .catch((e) => {
+    this.phoneService.login(this.phone, this.code).then(() => {
+      this.navCtrl.setRoot(ProfilePage, {}, {
+        animate: true
+      });
+    }).catch((e) => {
         this.handleError(e);
       });
   }

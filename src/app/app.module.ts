@@ -11,6 +11,7 @@ import { MessagesPage } from '../pages/messages-page/messages-page';
 import { PhoneService } from '../services/phone';
 import { LoginPage } from '../pages/login-page/login-page';
 import { VerificationPage } from '../pages/verification-page/verification-page';
+import { ProfilePage } from '../pages/profile-page/profile-page';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { VerificationPage } from '../pages/verification-page/verification-page';
     ChatsPage,
     MessagesPage,
     LoginPage,
-    VerificationPage
+    VerificationPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { VerificationPage } from '../pages/verification-page/verification-page';
     ChatsPage,
     MessagesPage,
     LoginPage,
-    VerificationPage
+    VerificationPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
