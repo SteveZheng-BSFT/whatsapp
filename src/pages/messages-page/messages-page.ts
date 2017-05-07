@@ -19,11 +19,13 @@ export class MessagesPage implements OnInit, OnDestroy {
   message: string = '';
   autoScroller: MutationObserver;
   scrollOffset = 0;
+  senderId: string;
 
   constructor(private el: ElementRef, public navParams: NavParams) {
     this.selectedChat = <Chat>navParams.get('chat');
     this.title = this.selectedChat.title;
     this.picture = this.selectedChat.picture;
+    this.senderId = Meteor.userId();
   }
 
   ngOnInit(): void {
@@ -41,7 +43,6 @@ export class MessagesPage implements OnInit, OnDestroy {
   }
 
   findMessagesDayGroups() {
-    let isEven = false;
 
     return Messages.find({ chatId: this.selectedChat._id }, { sort: { createdAt: 1 } })
       .map((messages: Message[]) => {
@@ -49,8 +50,7 @@ export class MessagesPage implements OnInit, OnDestroy {
 
         // Compose missing data that we would like to show in the view
         messages.forEach((message) => {
-          message.ownership = isEven ? 'mine' : 'other';
-          isEven = !isEven;
+          message.ownership = this.senderId === message.senderId ? 'mine' : 'other';
 
           return message;
         });
