@@ -36,7 +36,7 @@ Meteor.publishComposite('chats', function(): PublishCompositeConfig<Chat> {
 
   return {
     find: () => {
-      return Chats.collection.find({memberId: this.userId});
+      return Chats.collection.find({memberIds: this.userId});
     },
 
     children: [
