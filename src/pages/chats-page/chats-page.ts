@@ -3,8 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Chat } from 'api/models/chat';
 import { Chats } from 'api/collections/chats';
 import { Messages } from 'api/collections/messages';
-import { NavController } from 'ionic-angular';
+import { NavController, PopoverController } from 'ionic-angular';
 import { MessagesPage } from '../messages-page/messages-page';
+import { ChatsOptions } from './chats-options/chats-options';
 
 @Component({
   selector: 'page-chats-page',
@@ -13,7 +14,7 @@ import { MessagesPage } from '../messages-page/messages-page';
 export class ChatsPage implements OnInit {
   chats;
 
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController, private popoverCtrl: PopoverController) {
   }
 
   ngOnInit(): void {
@@ -37,6 +38,14 @@ export class ChatsPage implements OnInit {
 
   removeChat(chat: Chat): void {
     Chats.remove({_id: chat._id}).subscribe(() => {});
+  }
+
+  showOptions(): void {
+    const popover = this.popoverCtrl.create(ChatsOptions, {}, {
+      cssClass: 'options-popover chats-options-popover'
+    });
+
+    popover.present();
   }
 
 }
