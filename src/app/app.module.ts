@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login-page/login-page';
 import { VerificationPage } from '../pages/verification-page/verification-page';
 import { ProfilePage } from '../pages/profile-page/profile-page';
 import { ChatsOptions } from '../pages/chats-page/chats-options/chats-options';
+import { NewChat } from '../pages/chats-page/new-chat/new-chat';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChatsOptions } from '../pages/chats-page/chats-options/chats-options';
     LoginPage,
     VerificationPage,
     ProfilePage,
-    ChatsOptions
+    ChatsOptions,
+    NewChat
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { ChatsOptions } from '../pages/chats-page/chats-options/chats-options';
     LoginPage,
     VerificationPage,
     ProfilePage,
-    ChatsOptions
+    ChatsOptions,
+    NewChat
   ],
   providers: [
     StatusBar,
