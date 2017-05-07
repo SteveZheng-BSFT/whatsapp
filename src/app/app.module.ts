@@ -14,6 +14,7 @@ import { VerificationPage } from '../pages/verification-page/verification-page';
 import { ProfilePage } from '../pages/profile-page/profile-page';
 import { ChatsOptions } from '../pages/chats-page/chats-options/chats-options';
 import { NewChat } from '../pages/chats-page/new-chat/new-chat';
+import { MessagesOptions } from '../pages/messages-page/messages-options/messages-options';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NewChat } from '../pages/chats-page/new-chat/new-chat';
     VerificationPage,
     ProfilePage,
     ChatsOptions,
-    NewChat
+    NewChat,
+    MessagesOptions
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { NewChat } from '../pages/chats-page/new-chat/new-chat';
     VerificationPage,
     ProfilePage,
     ChatsOptions,
-    NewChat
+    NewChat,
+    MessagesOptions
   ],
   providers: [
     StatusBar,

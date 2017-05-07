@@ -1,11 +1,12 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, PopoverController } from 'ionic-angular';
 import { Chat } from 'api/models/chat';
 import { Message, MessageType } from 'api/models/message';
 import { Messages } from 'api/collections/messages';
 import { MeteorObservable } from 'meteor-rxjs';
 import * as moment from 'moment';
 import { _ } from 'meteor/underscore';
+import { MessagesOptions } from './messages-options/messages-options';
 
 @Component({
   selector: 'page-messages-page',
@@ -21,7 +22,7 @@ export class MessagesPage implements OnInit, OnDestroy {
   scrollOffset = 0;
   senderId: string;
 
-  constructor(private el: ElementRef, public navParams: NavParams) {
+  constructor(private el: ElementRef, public navParams: NavParams, private popoverCtrl: PopoverController) {
     this.selectedChat = <Chat>navParams.get('chat');
     this.title = this.selectedChat.title;
     this.picture = this.selectedChat.picture;
@@ -121,6 +122,16 @@ export class MessagesPage implements OnInit, OnDestroy {
       // Zero the input field
       this.message = '';
     });
+  }
+
+  showOptions(): void {
+    const popover = this.popoverCtrl.create(MessagesOptions, {
+      chat: this.selectedChat
+    }, {
+      cssClass: 'options-popover messages-options-popover'
+    });
+
+    popover.present();
   }
 
 }
