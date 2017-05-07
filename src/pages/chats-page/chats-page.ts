@@ -26,16 +26,19 @@ export class ChatsPage implements OnInit {
   }
 
   ngOnInit(): void {
-    MeteorObservable.subscribe('chats').subscribe(() => {
-      MeteorObservable.autorun().subscribe(() => {
-        this.chats = this.findChats();
-      });
+    Observable.merge(MeteorObservable.subscribe('chats'), MeteorObservable.autorun()).subscribe(() => {
+      this.chats = this.findChats();
     });
+    // MeteorObservable.subscribe('chats').subscribe(() => {
+    //   MeteorObservable.autorun().subscribe(() => {
+    //
+    //   });
+    // });
   }
 
   findChats(): Observable<Chat[]> {
     // Find chats and transform them
-    return Chats.find().map(chats => {
+    return Chats.find({}).map(chats => {
       chats.forEach(chat => {
         chat.title = '';
         chat.picture = '';

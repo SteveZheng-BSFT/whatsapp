@@ -1,8 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Chats } from './collections/chats';
-import { Messages } from './collections/messages';
-import { MessageType } from './models/message';
-import * as moment from 'moment';
 import { Accounts } from 'meteor/accounts-base';
 import { Users } from './collections/users';
 

@@ -4,8 +4,10 @@ import { Message } from './models/message';
 import { Messages } from './collections/messages';
 import { Chat } from './models/chat';
 import { Chats } from './collections/chats';
+import { Meteor } from 'meteor/meteor';
 
-Meteor.publish('users', (): Mongo.Cursor<User> => {
+// can't change to this syntax (): Mongo.Cursor<User> => {}
+Meteor.publish('users', function(): Mongo.Cursor<User> {
   if (!this.userId) {
     return;
   }
@@ -17,7 +19,7 @@ Meteor.publish('users', (): Mongo.Cursor<User> => {
   });
 });
 
-Meteor.publish('messages', (chatId: string): Mongo.Cursor<Message> => {
+Meteor.publish('messages', function(chatId: string): Mongo.Cursor<Message> {
   if (!this.userId || !chatId) {
     return;
   }
@@ -27,7 +29,7 @@ Meteor.publish('messages', (chatId: string): Mongo.Cursor<Message> => {
   });
 });
 
-Meteor.publishComposite('chats', (): PublishCompositeConfig<Chat> => {
+Meteor.publishComposite('chats', function(): PublishCompositeConfig<Chat> {
   if (!this.userId) {
     return;
   }

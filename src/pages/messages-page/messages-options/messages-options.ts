@@ -5,7 +5,7 @@ import { MeteorObservable } from 'meteor-rxjs';
 
 @Component({
   selector: 'page-messages-options',
-  templateUrl: 'src/pages/messages-page/messages-options/messages-options.html',
+  templateUrl: 'messages-options.html',
 })
 export class MessagesOptions {
 

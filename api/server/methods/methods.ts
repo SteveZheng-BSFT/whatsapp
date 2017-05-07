@@ -3,6 +3,7 @@ import { Messages } from '../collections/messages';
 import { MessageType } from '../models/message';
 import { Profile } from '../models/profile';
 import { check, Match } from 'meteor/check';
+import { Meteor } from 'meteor/meteor';
 
 const nonEmptyString = Match.Where((str) => {
   check(str, String);

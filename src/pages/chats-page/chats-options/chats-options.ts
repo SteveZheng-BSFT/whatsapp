@@ -42,9 +42,9 @@ export class ChatsOptions {
       ]
     });
 
-    // this.viewCtrl.dismiss().then(() => {
-    alert.present();
-    // });
+    this.viewCtrl.dismiss().then(() => {
+      alert.present();
+    });
   }
 
   handleLogout(alert: Alert): void {
